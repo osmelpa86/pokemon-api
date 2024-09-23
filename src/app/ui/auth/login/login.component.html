@@ -1,0 +1,85 @@
+<div class="main-login-container">
+  <div class="login-form-container">
+    <div class="login-title-container">
+      <span class="login-title">Login</span>
+    </div>
+
+    <form [formGroup]="loginForm">
+      <div class="login-input-container">
+        <div>
+          <mat-form-field class="fill-width" appearance="outline">
+            <mat-label>User</mat-label>
+            <input matInput type="text" required formControlName="username" />
+            @if (username.errors && username.touched) {
+            <mat-icon class="error-suffix" matSuffix>error</mat-icon>
+            }
+            <mat-icon matIconPrefix>person</mat-icon>
+          </mat-form-field>
+          @if (username.hasError('required') && username.touched) {
+          <div class="error-container-div">
+            <mat-error>
+              <span class="error-text"> Is required </span>
+            </mat-error>
+          </div>
+          }
+        </div>
+
+        <div>
+          <mat-form-field appearance="outline" class="fill-width">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              [type]="hide ? 'password' : 'text'"
+              required
+              formControlName="password"
+            />
+            <mat-icon matIconPrefix>password</mat-icon>
+
+            <div matSuffix>
+              @if (password.errors && password.touched) {
+              <mat-icon class="error-suffix">error</mat-icon>
+              }
+              <button
+                mat-icon-button
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </div>
+          </mat-form-field>
+          @if (password.hasError('required') && password.touched) {
+          <div class="error-container-div">
+            <mat-error>
+              <span class="error-text"> Is required </span>
+            </mat-error>
+          </div>
+          }
+        </div>
+      </div>
+    </form>
+
+    <div class="login-button-container">
+      <button
+        mat-fab
+        extended
+        color="primary"
+        class="my-class"
+        width="100%"
+        (click)="send()"
+      >
+        <mat-icon>check</mat-icon>
+        Aceptar
+      </button>
+    </div>
+
+    <div class="login-copyright-container">
+      <span class="login-copyright"
+        >© Copyright {{ date | date : "yyyy" }}</span
+      >
+    </div>
+  </div>
+</div>

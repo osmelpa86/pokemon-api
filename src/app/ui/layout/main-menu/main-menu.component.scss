@@ -1,0 +1,30 @@
+@use "@angular/material" as mat;
+@import "../../../../assets//styles/palette.scss";
+
+.main-menu-toolbar {
+  background-color: transparent;
+  box-shadow: none;
+  color: white;
+}
+
+.main-menu-nav {
+  display: flex;
+  flex-grow: 1;
+  color: mat.m2-get-color-from-palette($pokemon-api-primary, 500) !important;
+}
+
+.main-menu-nav a {
+  color: mat.m2-get-color-from-palette($pokemon-api-primary, 500) !important;
+  text-transform: uppercase;
+  margin-right: 0.9rem;
+}
+
+.active-menu-item {
+  border-bottom: 0.13rem solid mat.m2-get-color-from-palette($pokemon-api-primary, 500) !important;
+}
+
+@media (max-width: 48rem) {
+  .main-menu-toolbar {
+    display: none !important;
+  }
+}

@@ -1,0 +1,10 @@
+<div class="main-container" [class.main-is-mobile]="mobileQuery.matches">
+  <app-main-header></app-main-header>
+  <app-main-menu></app-main-menu>
+
+  <mat-sidenav-container class="main-sidenav-container">
+    <mat-sidenav-content class="main-mat-sidenav-content">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

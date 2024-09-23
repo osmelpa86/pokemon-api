@@ -1,0 +1,86 @@
+<mat-card class="responsive-card">
+  <mat-card-title>
+    <button
+      mat-icon-button
+      (click)="goToBack()"
+      routerLinkActive="router-link-active"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>Pokemon details</span>
+  </mat-card-title>
+  <mat-card-content>
+    @if (pokemon()) {
+    <div class="details-sprites-container">
+      <div class="details-pokemon-icon-container">
+        <img
+          [src]="pokemon().sprites.front_default"
+          class="details-pokemon-icon"
+        />
+      </div>
+    </div>
+
+    <div class="details-general-info">
+      <div class="details-item">
+        <span class="detail-title-info">Identificator </span
+        ><span class="detail-text">{{ pokemon().id }}</span>
+      </div>
+
+      <div>
+        <span class="detail-title-info">Name </span
+        ><span class="detail-text">{{ pokemon().name }}</span>
+      </div>
+
+      <div>
+        <span class="detail-title-info">Height </span
+        ><span class="detail-text">{{ pokemon().height }}</span>
+      </div>
+
+      <div>
+        <span class="detail-title-info">Order </span
+        ><span class="detail-text">{{ pokemon().order }}</span>
+      </div>
+
+      <div class="detail-item-with-icon">
+        <span class="detail-title-info">Status </span>
+        <mat-icon>{{
+          pokemon().status ? "task_alt" : "radio_button_unchecked"
+        }}</mat-icon>
+      </div>
+    </div>
+
+    <div class="details-movement-info">
+      <span class="detail-title-info">Movements </span>
+
+      <div class="details-movement-list">
+        @for (move of pokemon().moves; track $index) {
+        <div class="details-movement-item">
+          <mat-icon>circle</mat-icon>
+          <span class="detail-text">{{ move.move.name }}</span>
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="details-movement-info details-movement-info-types">
+      <span class="detail-title-info">Types </span>
+
+      <div class="details-movement-list">
+        @for (type of pokemon().types; track $index) {
+        <div class="details-movement-item">
+          <mat-icon>circle</mat-icon>
+          <span class="detail-text">{{ type.type.name }}</span>
+        </div>
+        }
+      </div>
+    </div>
+    }@else {
+    <div class="detail-not-data-container">
+      <mat-icon class="detail-not-data-icon">announcement</mat-icon>
+      <span class="detail-not-data-text"
+        >No data for the pokemon {{ pokemonName }}</span
+      >
+    </div>
+    }
+  </mat-card-content>
+</mat-card>
